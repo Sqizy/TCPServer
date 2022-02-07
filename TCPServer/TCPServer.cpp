@@ -18,15 +18,15 @@ void main()
 	int wsResult = WSAStartup(ver, &data);
 	if (wsResult != 0)
 	{
-		cerr << "Can't start Winsock, Err #" << wsResult << endl;
+
 		return;
 	}
 
-	// Create socket
+
 	SOCKET sock = socket(AF_INET, SOCK_STREAM, 0);
 	if (sock == INVALID_SOCKET)
 	{
-		cerr << "Can't create socket, Err #" << WSAGetLastError() << endl;
+
 		WSACleanup();
 		return;
 	}
@@ -41,7 +41,6 @@ void main()
 	int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
 	if (connResult == SOCKET_ERROR)
 	{
-		cerr << "Can't connect to server, Err #" << WSAGetLastError() << endl;
 		closesocket(sock);
 		WSACleanup();
 		return;
@@ -58,16 +57,16 @@ void main()
 
 		if (userInput.size() > 0)		
 		{
-			// Send the text
+
 			int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
 			if (sendResult != SOCKET_ERROR)
 			{
-				// Wait for response
+
 				ZeroMemory(buf, 4096);
 				int bytesReceived = recv(sock, buf, 4096, 0);
 				if (bytesReceived > 0)
 				{
-					// Echo response to console
+	
 					cout << "SERVER> " << string(buf, 0, bytesReceived) << endl;
 				}
 			}
