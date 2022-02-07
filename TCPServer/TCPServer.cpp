@@ -11,7 +11,7 @@ using namespace std;
 void main()
 {
 	string ipAddress = "192.168.42.172";	// IP
-	int port = 54000;						// Port
+	int port = 80;				// Port
 
 	WSAData data;
 	WORD ver = MAKEWORD(2, 2);
