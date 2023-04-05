@@ -10,7 +10,7 @@ using namespace std;
 
 void main()
 {
-	string ipAddress = "192.168.42.172";	// IP
+	string ipAddress = "127.0.0.1";	// IP
 	int port = 80;				// Port
 
 	WSAData data;
